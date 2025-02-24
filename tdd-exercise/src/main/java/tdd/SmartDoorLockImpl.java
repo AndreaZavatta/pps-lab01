@@ -11,6 +11,12 @@ public class SmartDoorLockImpl implements SmartDoorLock{
     private Optional<Integer> pin;
     private State state;
 
+    SmartDoorLockImpl(){
+        this.failedAttempts = 0;
+        this.pin = Optional.empty();
+        this.state = State.UNLOCKED;
+    }
+
     enum State {
         UNLOCKED, LOCKED, BLOCKED
     }
