@@ -38,7 +38,7 @@ public class MinMaxStackImpl implements MinMaxStack{
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return stack.isEmpty();
     }
 
     @Override
