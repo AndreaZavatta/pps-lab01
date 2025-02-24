@@ -28,7 +28,7 @@ public class CircularQueueImpl implements CircularQueue{
 
     @Override
     public int peek() {
-        return 0;
+        return queue.peek();
     }
 
     @Override

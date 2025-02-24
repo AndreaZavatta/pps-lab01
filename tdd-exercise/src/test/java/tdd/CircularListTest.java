@@ -37,6 +37,12 @@ public class CircularListTest {
     public void shouldThrowExceptionIfDequeueWhenEmpty(){
         assertThrows(IllegalStateException.class, ()->queue.deQueue());
     }
+    @Test
+    public void testPeek(){
+        queue.enQueue(ELEM);
+        assertEquals(ELEM, queue.peek());
+        assertEquals(SIZE_AFTER_ADDING_AN_ELEMENT, queue.size());
+    }
 
 
 }
