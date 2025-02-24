@@ -48,4 +48,16 @@ class MinMaxStackImplTest {
     public void shouldThrowExceptionGetMinWithoutValues(){
         assertThrows(RuntimeException.class, () -> minMaxStack.getMin());
     }
+
+    @Test
+    public void testMax(){
+        minMaxStack.push(VALUE_TO_PUSH);
+        minMaxStack.push(SMALLER_VALUE);
+        assertEquals(VALUE_TO_PUSH, minMaxStack.getMax());
+    }
+
+    @Test
+    public void shouldThrowExceptionGetMaxWithoutValues(){
+        assertThrows(RuntimeException.class, () -> minMaxStack.getMax());
+    }
 }
