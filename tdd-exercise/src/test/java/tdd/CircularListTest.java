@@ -1,6 +1,5 @@
 package tdd;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -10,14 +9,14 @@ import static org.junit.jupiter.api.Assertions.*;
  * The test suite for testing the CircularList implementation
  */
 public class CircularListTest {
-    public static final int SIZE = 3;
+    public static final int CAPACITY = 3;
     public static final int INIT_SIZE = 0;
     public static final int SIZE_AFTER_ADDING_AN_ELEMENT = 1;
     public static final int ELEM = 5;
     CircularQueue queue;
     @BeforeEach
     public void setup(){
-        queue = new CircularQueueImpl(SIZE);
+        queue = new CircularQueueImpl(CAPACITY);
     }
     @Test
     public void testSize() {
@@ -42,6 +41,11 @@ public class CircularListTest {
         queue.enQueue(ELEM);
         assertEquals(ELEM, queue.peek());
         assertEquals(SIZE_AFTER_ADDING_AN_ELEMENT, queue.size());
+    }
+
+    @Test
+    public void testCapacity(){
+        assertEquals(CAPACITY, queue.getCapacity());
     }
 
 
