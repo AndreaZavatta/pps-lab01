@@ -12,9 +12,7 @@ public class SmartDoorLockImpl implements SmartDoorLock{
     private State state;
 
     SmartDoorLockImpl(){
-        this.failedAttempts = 0;
-        this.pin = Optional.empty();
-        this.state = State.UNLOCKED;
+        this.reset();
     }
 
     enum State {
@@ -81,6 +79,8 @@ public class SmartDoorLockImpl implements SmartDoorLock{
 
     @Override
     public void reset() {
-
+        this.failedAttempts = 0;
+        this.pin = Optional.empty();
+        this.state = State.UNLOCKED;
     }
 }
