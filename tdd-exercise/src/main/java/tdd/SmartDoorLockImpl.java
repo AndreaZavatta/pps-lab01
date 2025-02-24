@@ -7,7 +7,11 @@ public class SmartDoorLockImpl implements SmartDoorLock{
     public static final int MIN_FOUR_DIGITS = 1000;
     public static final int MAX_FOUR_DIGITS = 9999;
     private Optional<Integer> pin;
-    private boolean isLocked;
+    private State state;
+
+    enum State {
+        UNLOCKED, LOCKED, BLOCKED
+    }
 
     private boolean pinIsCorrect(int pin){
         return this.pin.stream().anyMatch(x -> x == pin);
@@ -28,7 +32,7 @@ public class SmartDoorLockImpl implements SmartDoorLock{
     @Override
     public void unlock(int pin) {
         if(pinIsCorrect(pin)){
-            this.isLocked = false;
+            this.state = State.UNLOCKED;
         }
     }
 
@@ -39,7 +43,7 @@ public class SmartDoorLockImpl implements SmartDoorLock{
 
     @Override
     public boolean isLocked() {
-        return this.isLocked;
+        return this.state == State.LOCKED;
     }
 
     @Override
