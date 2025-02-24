@@ -55,7 +55,8 @@ public class SmartDoorLockImpl implements SmartDoorLock{
 
     @Override
     public void lock() {
-
+        this.pin.orElseThrow(() -> new IllegalStateException("Pin is not set"));
+        this.state = State.LOCKED;
     }
 
     @Override

@@ -57,4 +57,15 @@ public class SmartDoorLockTest {
         assertEquals(NUMBER_FAILED_ATTEMPTS, smartDoorLock.getFailedAttempts());
     }
 
+    @Test
+    public void shouldThrowExceptionIfSetLockWithoutSetPin(){
+        assertThrows(IllegalStateException.class, () -> smartDoorLock.lock());
+    }
+
+    @Test
+    public void testSetLock(){
+        smartDoorLock.setPin(PIN);
+        smartDoorLock.lock();
+        assertTrue(smartDoorLock.isLocked());
+    }
 }
