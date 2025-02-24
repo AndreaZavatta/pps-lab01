@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class MinMaxStackImplTest {
     public static final int VALUE_TO_PUSH = 10;
     public static final int SIZE_AFTER_POP = 1;
+    public static final int SMALLER_VALUE = 5;
     MinMaxStack minMaxStack;
 
     @BeforeEach
@@ -34,5 +35,17 @@ class MinMaxStackImplTest {
         assertTrue(minMaxStack.isEmpty());
         minMaxStack.push(VALUE_TO_PUSH);
         assertFalse(minMaxStack.isEmpty());
+    }
+
+    @Test
+    public void testMin(){
+        minMaxStack.push(VALUE_TO_PUSH);
+        minMaxStack.push(SMALLER_VALUE);
+        assertEquals(SMALLER_VALUE, minMaxStack.getMin());
+    }
+
+    @Test
+    public void shouldThrowExceptionGetMinWithoutValues(){
+        assertThrows(RuntimeException.class, () -> minMaxStack.getMin());
     }
 }
