@@ -42,6 +42,10 @@ public class CircularListTest {
         assertEquals(ELEM, queue.peek());
         assertEquals(SIZE_AFTER_ADDING_AN_ELEMENT, queue.size());
     }
+    @Test
+    public void shouldThrowExceptionIfPeekWhenEmpty(){
+        assertThrows(IllegalStateException.class, ()->queue.peek());
+    }
 
     @Test
     public void testCapacity(){

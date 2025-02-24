@@ -28,7 +28,11 @@ public class CircularQueueImpl implements CircularQueue{
 
     @Override
     public int peek() {
-        return queue.peek();
+        if(queue.isEmpty()){
+            throw new IllegalStateException("you can't dequeue an empty queue");
+        }else{
+            return queue.peek();
+        }
     }
 
     @Override
