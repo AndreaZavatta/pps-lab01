@@ -42,12 +42,12 @@ public class CircularQueueImpl implements CircularQueue{
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return queue.isEmpty();
     }
 
     @Override
     public boolean isFull() {
-        return false;
+        return queue.size() == capacity;
     }
 
     @Override

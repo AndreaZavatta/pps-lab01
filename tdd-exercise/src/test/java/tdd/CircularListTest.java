@@ -52,5 +52,16 @@ public class CircularListTest {
         assertEquals(CAPACITY, queue.getCapacity());
     }
 
+    @Test
+    public void testIsEmptyIsFull(){
+        assertTrue(queue.isEmpty());
+        queue.enQueue(ELEM);
+        assertFalse(queue.isEmpty());
+        queue.enQueue(ELEM);
+        assertFalse(queue.isFull());
+        queue.enQueue(ELEM);
+        assertTrue(queue.isFull());
+    }
+
 
 }
