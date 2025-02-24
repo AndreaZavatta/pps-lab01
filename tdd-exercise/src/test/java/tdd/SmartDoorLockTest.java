@@ -6,8 +6,10 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class SmartDoorLockTest {
-    public static final int PIN = 1234;
-    public static final int INVALID_PIN = 123;
+    private static final int PIN = 1234;
+    private static final int INVALID_PIN = 123;
+    private static final int WRONG_PIN = 1235;
+    public static final int BIAS_FOR_RIGHT_NUMBER_ATTEMPTS = 1;
     SmartDoorLock smartDoorLock;
 
 
@@ -26,6 +28,24 @@ public class SmartDoorLockTest {
         smartDoorLock.setPin(PIN);
         smartDoorLock.unlock(PIN);
         assertFalse(smartDoorLock.isLocked());
+    }
+
+    @Test
+    public void TestTooManyFailedAttempts(){
+        smartDoorLock.setPin(PIN);
+        for(int i = 0; i < smartDoorLock.getMaxAttempts(); i++){
+            smartDoorLock.unlock(WRONG_PIN);
+        }
+        assertTrue(smartDoorLock.isBlocked());
+    }
+
+    @Test
+    public void TestNotBlocked(){
+        smartDoorLock.setPin(PIN);
+        for(int i = 0; i < smartDoorLock.getMaxAttempts() - BIAS_FOR_RIGHT_NUMBER_ATTEMPTS; i++){
+            smartDoorLock.unlock(WRONG_PIN);
+        }
+        assertFalse(smartDoorLock.isBlocked());
     }
 
 }
