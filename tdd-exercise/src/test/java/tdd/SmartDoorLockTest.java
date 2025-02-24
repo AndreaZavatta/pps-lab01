@@ -10,6 +10,7 @@ public class SmartDoorLockTest {
     private static final int INVALID_PIN = 123;
     private static final int WRONG_PIN = 1235;
     public static final int BIAS_FOR_RIGHT_NUMBER_ATTEMPTS = 1;
+    public static final int NUMBER_FAILED_ATTEMPTS = 2;
     SmartDoorLock smartDoorLock;
 
 
@@ -46,6 +47,14 @@ public class SmartDoorLockTest {
             smartDoorLock.unlock(WRONG_PIN);
         }
         assertFalse(smartDoorLock.isBlocked());
+    }
+
+    @Test
+    public void CheckNumberOfFailedAttempts(){
+        smartDoorLock.setPin(PIN);
+        smartDoorLock.unlock(WRONG_PIN);
+        smartDoorLock.unlock(WRONG_PIN);
+        assertEquals(NUMBER_FAILED_ATTEMPTS, smartDoorLock.getFailedAttempts());
     }
 
 }
