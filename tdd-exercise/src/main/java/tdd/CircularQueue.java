@@ -14,11 +14,43 @@ package tdd;
  *   - Refactor
  */
 public interface CircularQueue {
+    /**
+     * add a number to the queue.
+     * if the queue is full, the oldest value will be removed
+     * @param elem the element that will be inserted
+     */
     void enQueue(Integer elem);
+
+    /**
+     * remove the oldest number inserted from the queue.
+     * @return the value just removed
+     * @throws IllegalStateException if the stack is empty.
+     */
     int deQueue();
+    /**
+     * get the oldest number inserted from the queue.
+     * @return the value found
+     * @throws IllegalStateException if the stack is empty.
+     */
     int peek();
+    /**
+     * get the size of the queue.
+     * @return the size
+     */
     int getCapacity();
+    /**
+     * check if the queue is empty
+     * @return true if the queue is empty, false otherwise
+     */
     boolean isEmpty();
+    /**
+     * check if the queue is full
+     * @return true if the queue is full, false otherwise
+     */
     boolean isFull();
+    /**
+     * get the actual size of the queue
+     * @return the actual size of the queue
+     */
     int size();
 }
