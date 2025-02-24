@@ -18,7 +18,7 @@ public class MinMaxStackImpl implements MinMaxStack{
 
     @Override
     public int pop() {
-        return 0;
+        return stack.pop();
     }
 
     @Override
@@ -43,6 +43,6 @@ public class MinMaxStackImpl implements MinMaxStack{
 
     @Override
     public int size() {
-        return 0;
+        return stack.size();
     }
 }
