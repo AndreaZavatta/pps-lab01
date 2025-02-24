@@ -4,11 +4,11 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class CircularQueueImpl implements CircularQueue{
-    private int size;
+    private int capacity;
     Queue<Integer> queue;
 
-    public CircularQueueImpl(final int size){
-        this.size = size;
+    public CircularQueueImpl(final int capacity){
+        this.capacity = capacity;
         queue = new LinkedList<>();
     }
 
@@ -29,7 +29,7 @@ public class CircularQueueImpl implements CircularQueue{
 
     @Override
     public int getCapacity() {
-        return this.size;
+        return this.capacity;
     }
 
     @Override
