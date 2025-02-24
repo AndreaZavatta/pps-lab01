@@ -7,6 +7,7 @@ package example.model;
  * Each account holder has a name, a surname and an ID (unique in the bank system)
  */
 public class AccountHolder {
+    public static final String STRING_FORMATTING = "[ID = %d] %s %s";
     private final int id;
     private final String name;
     private final String surname;
@@ -46,6 +47,6 @@ public class AccountHolder {
      * @return the string representation for an AccountHolder instance
      */
     public String toString() {
-        return String.format("[ID = %d] %s %s", this.id, this.name, this.surname);
+        return String.format(STRING_FORMATTING, this.id, this.name, this.surname);
     }
 }
