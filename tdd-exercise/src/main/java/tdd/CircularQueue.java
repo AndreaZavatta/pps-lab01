@@ -34,7 +34,7 @@ public interface CircularQueue {
      */
     int peek();
     /**
-     * get the size of the queue.
+     * get the max capacity of the queue.
      * @return the size
      */
     int getCapacity();
