@@ -17,8 +17,7 @@ class SimpleBankAccountTest {
     private static final int WITHDRAW_AMOUNT = 70;
     private static final int MONEY_LEFT = 30;
     private static final int SOME_USERID = 2;
-    public static final int DEPOSIT_AMOUNT_SOMEUSER = 50;
-    public static final int WITHDRAWAL_FEE = 1;
+    private static final int DEPOSIT_AMOUNT_SOMEUSER = 50;
 
 
 
@@ -50,7 +49,7 @@ class SimpleBankAccountTest {
     void testWithdraw() {
         bankAccount.deposit(accountHolder.getId(), DEPOSIT_AMOUNT);
         bankAccount.withdraw(accountHolder.getId(), WITHDRAW_AMOUNT);
-        assertEquals(MONEY_LEFT - WITHDRAWAL_FEE, bankAccount.getBalance());
+        assertEquals(MONEY_LEFT - SimpleBankAccount.WITHDRAWAL_FEE, bankAccount.getBalance());
     }
 
     @Test
