@@ -13,6 +13,7 @@ public class CircularListTest {
     public static final int INIT_SIZE = 0;
     public static final int SIZE_AFTER_ADDING_AN_ELEMENT = 1;
     public static final int ELEM = 5;
+    public static final int SECOND_ELEM = 6;
     CircularQueue queue;
     @BeforeEach
     public void setup(){
@@ -63,5 +64,16 @@ public class CircularListTest {
         assertTrue(queue.isFull());
     }
 
+    @Test
+    public void testCircularQueueFunctionality(){
+        queue.enQueue(ELEM);
+        queue.enQueue(SECOND_ELEM);
+        queue.enQueue(ELEM);
+        queue.enQueue(SECOND_ELEM);
+
+        assertEquals(SECOND_ELEM, queue.deQueue());
+        assertEquals(SECOND_ELEM, queue.deQueue());
+        assertEquals(ELEM, queue.deQueue());
+    }
 
 }

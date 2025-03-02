@@ -1,20 +1,30 @@
 package tdd;
 
 import java.util.LinkedList;
-import java.util.Queue;
+import java.util.List;
 
 public class CircularQueueImpl implements CircularQueue{
     private int capacity;
-    Queue<Integer> queue;
+    List<Integer> queue;
+    private int pointerPeek;
+    private int pointerEnqueue;
 
     public CircularQueueImpl(final int capacity){
         this.capacity = capacity;
         queue = new LinkedList<>();
+        this.pointerPeek = 0;
+        this.pointerEnqueue = 0;
     }
 
     @Override
     public void enQueue(Integer elem) {
-        queue.add(elem);
+        if(queue.size() == this.capacity){
+            queue.set(this.pointerEnqueue, elem);
+        }else{
+            queue.add(elem);
+        }
+        this.pointerEnqueue++;
+        resetPointerEnqueue();
     }
 
     @Override
@@ -22,7 +32,9 @@ public class CircularQueueImpl implements CircularQueue{
         if(queue.isEmpty()){
             throw new IllegalStateException("you can't dequeue an empty queue");
         }else{
-            return queue.poll();
+            int ret = queue.get(pointerPeek);
+            queue.remove(0);
+            return ret;
         }
     }
 
@@ -31,7 +43,22 @@ public class CircularQueueImpl implements CircularQueue{
         if(queue.isEmpty()){
             throw new IllegalStateException("you can't dequeue an empty queue");
         }else{
-            return queue.peek();
+            int ret = queue.get(pointerPeek);
+            this.pointerPeek++;
+            resetPointerPeek();
+            return ret;
+        }
+    }
+
+    private void resetPointerPeek(){
+        if(this.pointerPeek >= this.capacity){
+            this.pointerPeek = 0;
+        }
+    }
+
+    private void resetPointerEnqueue(){
+        if(this.pointerEnqueue >= this.capacity){
+            this.pointerEnqueue = 0;
         }
     }
 
